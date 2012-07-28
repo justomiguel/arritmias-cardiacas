@@ -1,0 +1,84 @@
+﻿package com.sismogames.framework.core.managers.base {
+	import com.sismogames.framework.core.IDisposable;
+	import com.sismogames.framework.core.IInitializable;
+	import com.sismogames.framework.core.state.IStatefulObject;
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.events.IEventDispatcher;
+	import flash.utils.Proxy;
+	
+	/**
+	 * ...
+	 * @author MatiX @ sismogames
+	 */
+	public class SProxyManager extends Proxy implements IManager, IInitializable, IDisposable, IEventDispatcher, IStatefulObject {
+		
+		use namespace flash.utils.flash_proxy;
+		
+		private var dispatcher:EventDispatcher = new EventDispatcher(this);
+		
+		public function SProxyManager() {
+			
+		}
+		
+		/* INTERFACE com.sismogames.framework.core.IInitializable */
+		
+		public function initialize():void{
+			this.state = STATE_READY;
+		}
+		
+		/* INTERFACE com.sismogames.framework.core.IDisposable */
+		
+		public function dispose():void{
+			this.state = STATE_UNITIALIZED;
+		}
+		
+		/* INTERFACE flash.events.IEventDispatcher */
+		
+		public function addEventListener(type:String, listener:Function, useCapture:Boolean = false, priority:int = 0, useWeakReference:Boolean = true):void{
+			dispatcher.addEventListener(type, listener, useCapture, priority, useWeakReference);
+		}
+		
+		public function dispatchEvent(event:Event):Boolean{
+			dispatcher.dispatchEvent(event);
+		}
+		
+		public function hasEventListener(type:String):Boolean{
+			dispatcher.hasEventListener(type);
+		}
+		
+		public function removeEventListener(type:String, listener:Function, useCapture:Boolean = false):void{
+			dispatcher.hasEventListener(type, listener, useCapture);
+		}
+		
+		public function willTrigger(type:String):Boolean{
+			dispatcher.willTrigger(type);
+		}
+		
+		/* INTERFACE com.sismogames.framework.core.state.IStatefulObject*/
+		
+		public static const STATE_UNITIALIZED:String = "STATE_UNITIALIZED";
+		public static const STATE_READY:String = "STATE_READY";
+
+		private var _state:String = STATE_UNITIALIZED;
+
+		public function get state():String {
+			return _state;
+		}
+
+		public function set state(state:String):void {
+			if (state != _state) {
+				_state = state;
+			}
+		}
+
+		public function isInState(state:String):Boolean {
+			return _state == state;
+		}
+
+		public function getAllStates():Array {
+			return [STATE_UNITIALIZED, STATE_READY];
+		}
+	}
+	
+}

@@ -1,0 +1,212 @@
+﻿<settings>
+	<general>
+		<!-- the colors code is in hexa -->
+		<buttonrollovercol>0xFFFFFF</buttonrollovercol>
+		<buttonrolloutcol>0xFFFFFF</buttonrolloutcol>
+	</general>
+	<texts>
+		<!--<button name="instructions">How to Play</button>-->
+		<!--<button name="play">¡Juega!</button>-->
+		<!--<button name="yes">Si</button>-->
+		<!--<button name="no">No</button>-->
+		<!--<button name="backtomenu">Volver</button>-->
+		<!--<button name="continue">Continuar</button>-->
+		<!--<button name="resume">Regresar</button>-->
+		<!--<button name="next">Ayuda</button>-->
+		<!--<button name="ok">Ok</button>-->
+		<!--<button name="skip">¡Juega!</button>-->
+		<!--<button name="back">Volver</button>-->
+		<!--<button name="playagain">Jugar de Nuevo</button>-->
+		<!--<button name="quit">Salir</button>-->
+		<!--<button name="pause">Pausa</button>-->
+		<!--<button name="help">Ayuda</button>-->
+		<!--<button name="link">FLY TO PixieHollow.com</button>-->
+		<!--<button name="submitscore">MAIN MENU</button>-->
+		
+		
+		
+		<!--<textfield name="loading">LOADING...</textfield>-->
+		<textfield name="water">Water</textfield>
+		<textfield name="light">Light</textfield>
+		<textfield name="tinker">Tinker</textfield>
+		<textfield name="garden">Garden</textfield>
+		<textfield name="animal">Animal</textfield>
+		
+		<textfield name="mainTitle">Flitterific</textfield>
+		<textfield name="secondTitle">Fairy Fortunes</textfield>
+		
+		<textfield name="introHeader">Fly into the secret world of Pixie Hollow...</textfield>
+	
+		<textfield name="tokens_name1">Tokens</textfield>
+		<textfield name="score_name1">Puntuación
+		</textfield>
+		
+		<textfield name="end_level_matches">Matches</textfield>
+		<textfield name="end_level_tokens">Tokens</textfield>
+		<textfield name="end_level_score">Score</textfield>
+		<textfield name="end_level_totalscore">Total Score</textfield>
+		
+		<textfield name="totalscore">RESULTADO FINAL</textfield>
+		<textfield name="pause">PAUSA</textfield>
+		
+		<!--<textfield name="quit">¿DESEA SALIR?</textfield>-->
+		<textfield name="quit_areyousure">Are You Sure?</textfield>
+		
+		<textfield name="fortuneHeader">Your flitterific fortune is...</textfield>	
+		
+		<textfield name="fortuneTeller">Default Talent</textfield>
+		
+		<textfield name="talentHeader">Fairy Talent Token Meter</textfield>
+
+		<textfield name="intro_text">…and discover your fairy fortune! Matching three or more tokens of the same color adds pixie dust to your talent scepter. When time runs out, the fullest scepter determines your fairy fortune! Take flight into Pixie Hollow and find what fortune holds in store for you!</textfield>	
+		
+
+		
+		<textfield name="title"> How to Play </textfield>
+		<textfield name="helpGeneralTokens"> Talent Tokens </textfield>
+		<textfield name="helpGeneralTokensExtended"><![CDATA[To collect tokens, <b>match three or more</b> by color. Swap tokens by clicking on a token and dragging it into a neighboring square.]]></textfield>
+		<textfield name="helpWrong"> Talent Tokens </textfield>
+		<textfield name="helpWrongExtended"> You can not move tokens to a square if there is no possibility of match. </textfield>
+		<textfield name="helpRowCollapser"> Row Collapser </textfield>
+		<textfield name="helpRowCollapserExtended"> Move the Row-Collapsing power-up into any neighboring square to collect all the tokens in that row. </textfield>
+		<textfield name="helpCrossroad"> Crossroad Collapser </textfield>
+		<textfield name="helpCrossroadExtended"> Move the Crossroad Collapsing power-up into any neighboring square to collect all the tokens in the row and column where it is placed.</textfield>
+		<textfield name="helpPowerUp"> Pixie Power </textfield>
+		<textfield name="helpPowerUpExtended"> Move the Pixie Power power-up into any neighboring square to collapse all tokens that match its color.</textfield>
+		<textfield name="helpLuckyBerry"> Lucky Berry </textfield>
+		<textfield name="helpLuckyBerryExtended"> Move the Lucky Berry power-up into any neighboring square to collapse multiple tokens at random. </textfield>
+		<textfield name="helpTalentBars"> Talent Scepters </textfield>
+		<textfield name="helpTalentBarsExtended1"> Each talent scepter corresponds to a talent token. As you match, each scepter will fill with pixie dust. Try to fill each scepter as many times as you can. </textfield>
+		<textfield name="helpTalentBarsExtended2"> Try to complete as much scepters as you can! </textfield>
+		<textfield name="helpTimeBar"> Timer Bar </textfield>
+		<textfield name="helpTimeBarExtended1"> Keep water in the timer bar by making matches. The game ends when all the water has trickled out.</textfield>
+		<textfield name="helpTimeBarExtended2"> When the water starts to splash, it means that you are running out of time. The game ends when the container is dry. </textfield>
+
+
+  
+	<ingame name="good">Flap On!</ingame>
+	<ingame name="good">Flitterific!</ingame>
+	<ingame name="good">Fairytastic!</ingame>
+    <ingame name="good">Pixielicious!</ingame>
+    <ingame name="good">Dustworthy!</ingame>
+    
+		<ingame name="feelings">¡Bravo!</ingame>
+		<ingame name="feelings">¡Increíble!¡Qué dominio!</ingame>
+		<ingame name="feelings">¡Sí! ¡Sí! ¡Sí!</ingame>
+		<ingame name="feelings">¡Esto si que es combinar sabor!</ingame>
+		<ingame name="feelings">¡Vas a pulverizar el récord!</ingame>
+		<ingame name="feelings">¡Vamos! ¡sigue sumaaaando!</ingame>
+		<ingame name="feelings">¡Cada vez estás más cerca de tu sesión de Spa!</ingame>
+		<ingame name="feelings">¡No se te resiste ni una!</ingame>
+		<ingame name="feelings">¡Genial!</ingame>
+		<ingame name="feelings">¡Wooow! ¡Sigue así, estás imparable!</ingame>
+
+		<ingame name="marketing">Suma sabores y resta azúcares y grasas</ingame>
+		<ingame name="marketing">Gana salud sin renunciar al Sabor</ingame>
+		<ingame name="marketing">¿Quién dijo que todo lo bueno engorda?</ingame>
+		<ingame name="marketing">Voy haciendo sitio en la nevera para mi Vitalinea Muesli</ingame>
+		<ingame name="marketing">Date prisa en acabar con el segundo que hoy el postre te va a gustar…</ingame>
+				
+		<fortunes>
+			
+			<score text="8"> Queen Clarion will be proud! </score>
+			<score text="7"> You're bursting with Pixie Power! </score>
+			<score text="6"> You're really flapping now! </score>
+			
+			<score text="5"> You're brighter than a firefly! </score>
+			<score text="4"> Your wings are humming! </score>
+			<score text="3"> You flit like the wind! </score>
+			<score text="2"> You're sparkling! </score>
+			<score text="1"> Sweet work, Honeysuckle! </score>
+			
+			<link text="Water">Create your very own Fairy and "dew drop" in to PixieHollow.com!</link>
+			<link text="Garden"> Visit PixieHollow.com and help Rosetta collect flower petals in the breeze!</link>
+			<link text="Tinker">Tinker flitterific Fairy furnishings at Copper's Tinker Nook in PixieHollow.com!</link>
+			<link text="Light">Fly into PixieHollow.com and help the Light Fairies give fireflies their glow!</link>
+			<link text="Animal"> Lend a helping paw and complete a new quest in PixieHollow.com!</link>
+			
+			<link_description text="Water">Silvermist looks forward to seeing you in Pixie Hollow!</link_description>
+			<link_description text="Garden">Rosetta looks forward to seeing you in Pixie Hollow!</link_description>
+			<link_description text="Tinker">Tinker Bell looks forward to seeing you in Pixie Hollow!</link_description>
+			<link_description text="Light">Iridessa looks forward to seeing you in Pixie Hollow!</link_description>
+			<link_description text="Animal">Fawn looks forward to seeing you in Pixie Hollow!</link_description>
+			
+			<link1 url="Water"><![CDATA[http://pixiehollow.go.com/?source=PpPHPixDol00007&cmp=fai_BAC_PH_Dconnection_Flitterific_Fairy_Fortunes_Extl]]></link1>
+			<link1 url="Garden"><![CDATA[http://pixiehollow.go.com/?source=PpPHPixDol00007&cmp=fai_BAC_PH_Dconnection_Flitterific_Fairy_Fortunes_Extl]]></link1>
+			<link1 url="Tinker"><![CDATA[http://pixiehollow.go.com/?source=PpPHPixDol00007&cmp=fai_BAC_PH_Dconnection_Flitterific_Fairy_Fortunes_Extl]]></link1>
+			<link1 url="Light"><![CDATA[http://pixiehollow.go.com/?source=PpPHPixDol00007&cmp=fai_BAC_PH_Dconnection_Flitterific_Fairy_Fortunes_Extl]]></link1>
+			<link1 url="Animal"><![CDATA[http://pixiehollow.go.com/?source=PpPHPixDol00007&cmp=fai_BAC_PH_Dconnection_Flitterific_Fairy_Fortunes_Extl]]></link1>
+
+			
+			<ingame name = "Water0">You're a true-blue friend – no one could call you wishy-washy! You always keep cool and collected, and stand by what you know is right.</ingame> 
+			<ingame name = "Water1">Fairy, you have a heart as big as the sea – and as light as a single dew-drop. No wonder friends enjoy swimming alongside you.</ingame> 
+			<ingame name = "Water2">Fairy, you are poised to make a big splash! The time is right to tackle a big project and show the world what you can do. Don't be nervous – just dive right in.</ingame> 
+			<ingame name = "Water3">You really know how to go with the flow, fairy – no matter what comes along. Use your talent for keeping your cool to help your friends when things get rough!</ingame> 
+			<ingame name = "Water4">Deep and mysterious or dancing and full of sparkling light? Water can flow both ways – and so can you! You have many moods.</ingame> 			
+			
+			<ingame name = "Tinker0">You can make anything you set your mind and heart to, from friends to frescos! All it takes is a little "tinkering" – and you have a real gift for that.</ingame> 
+			<ingame name = "Tinker1">Gotta problem? Don't despair – just keep "tinkering" until it's solved. With your talents and can-do attitude, you can fix it! </ingame> 
+			<ingame name = "Tinker2">Hey, ya got a real tinker's gift for creativity. Why not try mastering a new craft this week? With your talents, it'll be a snap!</ingame> 
+			<ingame name = "Tinker3">Hey, you're a master tinker – you can fix anything if you put your mind to it. Why not put that tinker know-how to use and volunteer to help solve a problem in your neighborhood? </ingame> 
+			<ingame name = "Tinker4">You're a true-blue tinker! Just like Tink herself, you love to create and improve. No wonder your friends look to you for great ideas and smart solutions. Keep tinkering!</ingame> 
+			
+			<ingame name = "Garden0">Fairy, ya have a gift for growing – both flowers and friendships! Just make sure to provide a little tender care, and your circle of friends will blossom. </ingame> 
+			<ingame name = "Garden1">With your garden talents, it's no surprise that everything is coming up roses for you, fairy! You have that magic touch that makes the world a more beautiful place.</ingame> 
+			<ingame name = "Garden2">What's up, Buttercup?  You're a wise fairy and know that with patience and loving care, you can make anything rise and thrive – from flowers to your grades at school.</ingame> 
+			<ingame name = "Garden3">Fairy, fairy, not contrary, how does your garden grow? Just beautifully, Sweetpea! Share your gift for growing things with friends and family – surprise someone with a bouquet. </ingame> 
+			<ingame name = "Garden4">Don't be a wallflower, Honeysuckle! You have the seeds of greatness in you and the talent to grow into anything you want to be. Take your place in the sun and get ready to bloom. </ingame> 
+			
+			<ingame name = "Animal0">A little bluebird told me that you'll never lack for furry friends – pets and critters of all kinds love you, and you love them right back!  </ingame> 
+			<ingame name = "Animal1">Hey, fairy! Critters can't resist your charms. Your kind heart and gentle hands make you a natural friend to all – animals and people alike!</ingame> 
+			<ingame name = "Animal2">Fairy, you really have "animal magnetism"! You're a great problem- solver, because you know the secret of listening to your friends.</ingame> 
+			<ingame name = "Animal3">Your talent is definitely "fur real," fairy! Like animals, you know that actions speak louder than words. Consider doing something kind for critters – hang a birdhouse, or volunteer with a rescue group.</ingame> 
+			<ingame name = "Animal4">Fur, feathers, and scales – your friends take many forms. You're wise enough to look below the surface, because what's inside is what really counts.</ingame> 
+			
+			<ingame name = "Light0">With your sunny heart, you can bring a ray of light to even the darkest problems. Just think carefully, and let your heart be your guide.</ingame> 
+			<ingame name = "Light1">You're a real beam of sunshine, fairy! Your feet are almost as light as your heart – have you considered learning to dance?</ingame> 
+			<ingame name = "Light2">How bright are you, fairy? Your talent's practically blinding! Put it to work bringing a little ray of light to someone who's feeling blue.</ingame> 
+			<ingame name = "Light3">Shine on, you dazzling fairy! The spotlight is calling. Put your talents to work on stage, and see how bright your star can become.</ingame> 
+			<ingame name = "Light4">No one in Pixie Hollow has a brighter heart than you, fairy. When things look dark, just remember your inner light and let your talent chase the shadows away.</ingame> 
+			
+		</fortunes>
+		
+	</texts>
+
+	<levels>
+		<talentobjective>
+			<tokens>360</tokens>
+			<seconds>120</seconds>
+		</talentobjective>
+		<level id="1" >
+				<objective>
+					<tokens>121</tokens>
+				</objective>
+				<settings>
+					<tokenTalentGeneralValue>10</tokenTalentGeneralValue>
+					<timeIncrementByToken>0</timeIncrementByToken>
+					<poweruptokenTalentGeneralValue>1</poweruptokenTalentGeneralValue>
+					<scorebytoken>10</scorebytoken>
+				</settings>
+				<fairy>
+					<mentalspeed>110</mentalspeed>
+					<colorodds>
+						<garden>1</garden>
+						<tinker>1</tinker>
+						<light>1</light>
+						<water>1</water>
+						<animal>1</animal>
+					</colorodds>
+					<powerups>
+							<!--  
+							<type>swap_color</type>
+							<rowpowerups>3</rowpowerups>
+							<rowcolumpowerups>3</rowcolumpowerups>
+							-->
+							<type>destroy_random</type> 
+							<rowpowerups>1</rowpowerups> 
+							<rowcolumpowerups>1</rowcolumpowerups>
+					</powerups>
+				</fairy>
+		</level>
+	</levels>
+</settings>
