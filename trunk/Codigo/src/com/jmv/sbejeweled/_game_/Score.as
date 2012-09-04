@@ -29,19 +29,20 @@ package com.jmv.sbejeweled._game_
 			
 			this.matches = 0;
 			
-			App.I().swfs["sismo"].score();
+			//App.I().swfs["sismo"].score();
 			//this.totalScore = 0;	
 			//App.I().danone = new Array(0, 0);
 		}
 		
 		public function sum(dif:int):void
 		{
-			App.I().swfs["sismo"].sum(dif);	
+			//App.I().swfs["sismo"].sum(dif);	
 		}
 		
 		public function get totScore():int {
 
-			return App.I().swfs["sismo"].totScore;
+			//return App.I().swfs["sismo"].totScore;
+			return 0
 
 		}
 		

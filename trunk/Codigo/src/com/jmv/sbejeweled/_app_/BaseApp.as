@@ -1,6 +1,7 @@
 package com.jmv.sbejeweled._app_
 {
 	import com.jmv.framework.core.SApplication;
+	import com.jmv.framework.tween.STween;
 	import com.jmv.sbejeweled.screens.Loading;
 	import com.jmv.sbejeweled.screens.TransitionClass;
 	
@@ -80,9 +81,8 @@ package com.jmv.sbejeweled._app_
 			
 		}
 		
-		private function onLoadLoadingComplete(e:Event):void
-		{
-
+		private function onLoadLoadingComplete(e:Event):void {
+			
 			var loaderinfo:LoaderInfo = e.target as LoaderInfo;
 			loaderinfo.loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, this.onLoadLoadingComplete);
 			this.loading = new Loading(loaderinfo.content as MovieClip);

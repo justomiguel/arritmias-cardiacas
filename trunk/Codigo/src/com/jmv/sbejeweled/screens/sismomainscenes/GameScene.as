@@ -1,6 +1,5 @@
 package com.jmv.sbejeweled.screens.sismomainscenes 
 {
-	import com.jmv.facebar.class_folder.FacebookInterface;
 	import com.jmv.framework.core.SApplication;
 	import com.jmv.framework.events.SEvent;
 	import com.jmv.framework.gaming.ai.state_machines.base.SMMachine;
@@ -93,9 +92,7 @@ package com.jmv.sbejeweled.screens.sismomainscenes
 			this.addChild(game);
 			
 			this.game.init();
-			
-			FacebookInterface.instance.updateTiempoInicio();
-			
+						
 		}
 		
 		

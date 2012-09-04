@@ -97,6 +97,7 @@ package com.jmv.sbejeweled._game_
 		public function init():void
 		{
 			
+			
 			this.goal = settings.getGoalTokens();
 			this.goalTokens = settings.getGoalTokens();
 		
@@ -243,7 +244,7 @@ package com.jmv.sbejeweled._game_
 			
 			this.levelUI.updateScore(this.goalTokens);
 
-			this.checkGoalTokens();
+			//this.checkGoalTokens();
 		}
 		
 		private function showPopup(ev:SEvent):void
