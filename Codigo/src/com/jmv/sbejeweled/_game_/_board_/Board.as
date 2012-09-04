@@ -25,8 +25,8 @@ package com.jmv.sbejeweled._game_._board_
 	
 	public class Board extends SSprite
 	{
-		public static const COLS:int = 8;
-		public static const ROWS:int = 7;
+		public static const COLS:int = 10;
+		public static const ROWS:int = 10;
 		
 		public static const BOARD_INITIAL_X:int = -45;
 		public static const BOARD_INITIAL_Y:int = 10;
@@ -168,7 +168,6 @@ package com.jmv.sbejeweled._game_._board_
 				if ( this.areTilesAdjacent( tile ) )
 				{
 					this.standBy = false;
-					//this.tasks.setTimeout( this.swap, this.speedMult * 100, this.selectedTile, tile, true);
 					setTimeout(this.swap, this.speedMult * 100, this.selectedTile, tile, true)
 				}
 				else

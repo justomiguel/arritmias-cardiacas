@@ -110,7 +110,8 @@
 					time.stop();
 					time.reset();
 					
-					nextStep();
+					//nextStep();
+					STween.to(this, 5, { onComplete:nextStep } );
 				}
 		}
 		
@@ -120,8 +121,6 @@
 			{
 				time.reset();
 				time.stop();
-				
-				
 				var loading:Loading = this;
 				if (this.parent) {
 					STween.to(this, 1, {autoAlpha:0, onComplete:function():void{loading.parent.removeChild(loading); _func.apply(loading);}})

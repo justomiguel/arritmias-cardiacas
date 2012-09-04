@@ -285,14 +285,9 @@ package com.jmv.sbejeweled._game_.ui
 		public function updateScore(goal:Object):void {
 			
 			var usScore:Score = this.game.user.score;
-		
 			this.userTokens.text = usScore.tokens.toString();
-	
-			//this.userScore.text = usScore.totalScore.toString();
 			this.userScore.text = usScore.totScore.toString();
-			
 			var usAnimalScore:Score = this.game.user.scoreAnimal;
-
 			this.meterAnimal.update( (usAnimalScore.tokens / goal.tokens) );
 
 		}

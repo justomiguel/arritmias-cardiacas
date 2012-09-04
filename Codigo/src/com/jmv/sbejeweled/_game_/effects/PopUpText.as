@@ -15,7 +15,7 @@ package com.jmv.sbejeweled._game_.effects
 			super();
 			//App.I().log(text);
 			var label:TextField = this.textfield.label;
-			label.text = text;
+			label.text = text!=null?text:"1";
 			/*
 			if (text.length>15)
 			{

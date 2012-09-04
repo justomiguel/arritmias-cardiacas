@@ -1,6 +1,5 @@
 package com.jmv.sbejeweled._game_ {
 	
-	import com.jmv.facebar.class_folder.FacebookInterface;
 	import com.jmv.framework.core.SApplication;
 	import com.jmv.framework.utils.DisplayObjectUtil;
 	import com.jmv.sbejeweled.App;
@@ -81,7 +80,6 @@ package com.jmv.sbejeweled._game_ {
 		
 		public function init():void
 		{
-
 			this.user.score.levelsWon = 0;
 			this.user.scoreAnimal.tokens = 0;			
 			this.startDuel(1);
@@ -189,8 +187,6 @@ package com.jmv.sbejeweled._game_ {
 				this.addChild(level);
 				this.level.init();
 				this.setPause(true);
-				//TransitionClass.getInstance().takePicture(this.level, this);
-				//TransitionClass.getInstance().doFade();
 				beginFirst()
 				
 			} else {
@@ -238,48 +234,20 @@ package com.jmv.sbejeweled._game_ {
 		
 		private function looseGame():void
 		{
-			//trace( "looseGame : " + looseGame );
-				//App.I().hub.dispatch('loseGame');	
 				SApplication.application.scenes.switchScene("ScreenLooseGameScene");
 				
-
-
 		}
 		
 		private function winGame():void
 		{
-			//Mando score a la barra				
-			if (user.score.totScore == -10) {
-				FacebookInterface.instance.updateScore( user.score.totScore, App.I().swfs["sismo"].encrypt(user.score.totScore), 10000);
-				App.I().dispose();
-			}else {
-				FacebookInterface.instance.updateScore( user.score.totScore, App.I().swfs["sismo"].encrypt(user.score.totScore*1000), contPause);		
-			}
-
-			
-			//trace( "winGame : " + winGame );
 			SApplication.application.scenes.switchScene("ScreenWinGameScene");
 			this.endMyLevel();
 			App.I().setGameIsRunning(false);
-						
-			//App.I().hub.dispatch('winGame');
-			
-				
-		}
-		
-	
-
-		
-		private function onScreenEndDuelComplete():void
-		{
-				winGame();
-			
 		}
 		
 		private function startDuel(num:int):void
 		{
 				App.I().setGameIsRunning(true);
-	
 				this._duelNum = num;
 				this.startLevel(this.getFirstLevelForDuel(num));	
 		}

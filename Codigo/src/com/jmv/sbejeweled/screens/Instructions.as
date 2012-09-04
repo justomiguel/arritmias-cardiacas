@@ -152,31 +152,13 @@ package com.jmv.sbejeweled.screens
 		
 		private function onBackToMenu(ev:MouseEvent):void
 		{
-			//if (nextPage > 1) {
-				//nextPage--;
-				//this.asset.transitionInst.gotoAndPlay(2);				
-			//} else if (nextPage == 1) {
-				//if (App.I().state() == App.ON_MENU) {
-					//TransitionClass.getInstance().savePicture(this);
-					//App.I().hub.dispatch('onClickBacktomenu');
-					//SApplication.application.scenes.switchScene("IntroScene");
-				//} else {
-					//TransitionClass.getInstance().savePicture(this);
-					//App.I().game._currentScene.screenMachineState.setEvent(GameScene.ON_CLICK_BACK);
-				//}
-				//this.dispose();
-			//}
-			
 			if (nextPage > 0) {
 				nextPage-= 10;
 				this.asset.container.gotoAndStop(nextPage);					
 			} else if (nextPage == 0) {
 				if (App.I().state() == App.ON_MENU) {
-					//TransitionClass.getInstance().savePicture(this);
-					//App.I().hub.dispatch('onClickBacktomenu');
 					SApplication.application.scenes.switchScene("IntroScene");
 				} else {
-					//TransitionClass.getInstance().savePicture(this);
 					App.I().game._currentScene.screenMachineState.setEvent(GameScene.ON_CLICK_BACK);
 				}
 				this.dispose();
@@ -185,13 +167,10 @@ package com.jmv.sbejeweled.screens
 		
 			private function onClickResume(ev:MouseEvent):void
 		{		
-				//trace( "App.I().state() == App.ON_MENU : " + (App.I().state() == App.ON_MENU) );
 			if (App.I().state() == App.ON_MENU) {
-				//TransitionClass.getInstance().savePicture(this);
 				App.I().selectUser(AbstractPlayer.FAIRY);
 				SApplication.application.scenes.switchScene("GameScene");
 			} else {
-				//TransitionClass.getInstance().savePicture(this);
 				App.I().game._currentScene.screenMachineState.setEvent(GameScene.ON_CLICK_BACK);
 			}
 			this.dispose();

@@ -90,15 +90,11 @@
 			this.initAudio();			
 		}
 		
-		private function initSettings():void {
-
-			//ASI CARGABA ANTES DE FORMA DINAMICA
-			
-			//var url:String = BASE+"data/settings.xml";
-			//var xmlLoader:URLLoader = new URLLoader();
-			//xmlLoader.load(new URLRequest(url));
-			//xmlLoader.addEventListener(Event.COMPLETE, onLoadSettingsComplete);
-			this.onLoadSettingsComplete();
+		private function initSettings():void {			
+			var url:String = BASE+"data/settings.xml";
+			var xmlLoader:URLLoader = new URLLoader();
+			xmlLoader.load(new URLRequest(url));
+			xmlLoader.addEventListener(Event.COMPLETE, onLoadSettingsComplete);
 		}
 		
 		public override function dispose():void {
@@ -209,26 +205,7 @@
 			
 			this.addLoading();
 			sloaderGame = new SLoader("GameAssetsLoader");			
-			
-			sloaderGame.add(BASE+"assets/Game.swf", "Game");
-			sloaderGame.add(BASE+"assets/Instructions.swf", "Instructions");
-			sloaderGame.add(BASE+"assets/Intro.swf", "Intro");
-			sloaderGame.add(BASE+"assets/Screens.swf", "Screens");
-			sloaderGame.add(BASE+"assets/Screens_Endings.swf", "Screens_Endings");
-			sloaderGame.add(BASE+"assets/Screens_Endings2.swf", "Screens_Endings2");
-			sloaderGame.add(BASE+"assets/Transition.swf", "Transition");
-			sloaderGame.add(BASE+"assets/Transition2.swf", "Transition2");
-			sloaderGame.add(BASE + "assets/UI.swf", "UI");
-			
-			
-			//prueba sismo
-			//sloaderGame.add(BASE+"assets/sismo.swf", "sismo");
-			
-			//for each (var musicId:String in this.audiosettings.music)
-				//sloaderGame.add(BASE+"assets/"+musicId+".mp3", musicId);
-			//
-			//for each (var sfxId:String in this.audiosettings.sfx)
-				//sloaderGame.add(BASE + "assets/" + sfxId + ".mp3", sfxId);
+			sloaderGame.add(BASE+"assets/screens.swf", "Screens");
 				
 			sloaderGame.addEventListener(SLoaderEvent.PROGRESS, onLoadGameAssetsProgressQpack, false, 0, true); 
 			sloaderGame.addEventListener(SLoaderEvent.COMPLETE, onLoadGameAssetsCompleteQpack, false, 0, true);			
@@ -242,31 +219,8 @@
 		
 		private function onLoadGameAssetsCompleteQpack(e:SLoaderEvent):void{
 			
-			var Gameq:* = this.sloaderGame.getContent("Game");			
-			var Instructionsq:* = this.sloaderGame.getContent("Instructions");
-			var Introq:* = this.sloaderGame.getContent("Intro");
 			var Screens:* = this.sloaderGame.getContent("Screens");
-			var Screens_Endings:* = this.sloaderGame.getContent("Screens_Endings");
-			var Screens_Endings2:* = this.sloaderGame.getContent("Screens_Endings2");
-			var Transition:* = this.sloaderGame.getContent("Transition");
-			var Transition2:* = this.sloaderGame.getContent("Transition2");
-			var UI:* = this.sloaderGame.getContent("UI");
-			
-			
-			var sismo:* = this.sloaderGame.getContent("sismo");
-			
-			this.swfs["Game"] = Gameq;
-			this.swfs["Instructions"] = Instructionsq;
 			this.swfs["Screens"] = Screens;
-			this.swfs["Intro"] = Introq;
-			this.swfs["Screens_Endings"] = Screens_Endings;
-			this.swfs["Screens_Endings2"] = Screens_Endings2;
-			this.swfs["Transition"] = Transition;
-			this.swfs["Transition2"] = Transition2;
-			this.swfs["UI"] = UI;
-			
-			
-			this.swfs["sismo"] = sismo;
 			
 			for each (var musicId:String in this.audiosettings.music)
 				this.audio.registerMusic(musicId, this.sloaderGame.getContent(musicId) as Sound);
@@ -289,37 +243,6 @@
 			this.getLoading().loadAnimations({progressPercent:(progressloaded*100/totalToLoad)})
 		}
 		
-		private function onLibrariesLoaded(e:RSLEvent):void {
-			//trace( "onLibrariesLoaded : " + onLibrariesLoaded );
-			this.removeLoading(nextStep);
-		}
-		
-		//private function loadInstructions():void {
-						//
-			//if ((!this.swfs[BASE+"assets/Instructions.swf"] )){
-				//
-				//contLoader = 0;
-				//
-				//this.getLoading().resetAnimations();
-				//
-				//var g:GroupLoad = new GroupLoad();
-				//
-				//g.addLoader(BASE + "assets/Instructions.swf").addEventListener(Event.COMPLETE, this.onLoadSwfComplete);			
-				//
-				//
-				//g.addEventListener(GroupLoadProgressEvent.PROGRESS, onLoadInstructionsProgress);
-				//tasks.add(new Sequence(g, new Func(onLoadInstructionsComplete)));
-				//
-			//} else {
-				//onLoadInstructionsCompleteWithoutLoad();
-			//}
-			//
-		//}
-		
-		//private function onLoadInstructionsProgress(e:GroupLoadProgressEvent = null):void 
-		//{
-			//this.getLoading().loadAnimations(e)
-		//}
 		
 		private function onLoadInstructionsCompleteWithoutLoad():void {
 			instructionLoaded = true;
@@ -341,26 +264,14 @@
 		
 		private function onLoadSettingsComplete(e:Event = null):void
 		{
-			//var data:XML = new XML(e.target.data);
-			//var data:XML = new XML(e.target.data);
-			//trace( "data : " + data );
-			
-			var dataEmbed:XML = settingsEmbed.xml;
-			//trace( "data2 : " + data2 );
-			
-			settings = new Settings(dataEmbed);
-			
+			var data:XML = new XML(e.target.data);
+			settings = new Settings(data);
 			this.loadLoading();			
 		}
 		
 		protected override function onBaseComplete():void {
 			initSettings();
 		}
-		
-		//private function onLoadAssetsProgress(e:GroupLoadProgressEvent = null):void
-		//{		
-			//this.getLoading().loadAnimations(e)
-		//}
 		
 		private function onLoadAssetsComplete():void
 		{
@@ -516,40 +427,20 @@
 			
 			// INIT SCENES
 			scenes.addScene("MainMenuScene", MainMenuScene);
-			scenes.addScene("IntroScene", IntroScene);
 			scenes.addScene("InstructionsScene", InstructionsScene);
-			scenes.addScene("GameScene", GameScene);
-			scenes.addScene("ScreenLooseGameScene", ScreenLooseGameScene);
-			scenes.addScene("ScreenWinGameScene", ScreenWinGameScene);
+			scenes.addScene("GameScene", ArritmiasMainScene);
+
 			
 			// SET TRANSITIONS
-			SCrossFadeTransition.defaultDuration = 1;
-			scenes.transitions.addTransition("MainMenuScene", "IntroScene", SCrossFadeTransition);
-			
-			scenes.transitions.addTransition("IntroScene", "MainMenuScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("IntroScene", "InstructionsScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("IntroScene", "GameScene", SCrossFadeTransition);
-			
+			SCrossFadeTransition.defaultDuration = 0;
+			scenes.transitions.addTransition("MainMenuScene", "GameScene", SCrossFadeTransition);
 			scenes.transitions.addTransition("InstructionsScene", "GameScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("InstructionsScene", "IntroScene", SCrossFadeTransition);
-			
-			scenes.transitions.addTransition("ScreenWinGameScene", "GameScene", SCrossFadeTransition);			
-			scenes.transitions.addTransition("ScreenWinGameScene", "MainMenuScene", SCrossFadeTransition);
-			
-			scenes.transitions.addTransition("ScreenLooseGameScene", "MainMenuScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("ScreenLooseGameScene", "GameScene", SCrossFadeTransition);
-			
-			scenes.transitions.addTransition("GameScene", "MainMenuScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("GameScene", "ScreenLooseGameScene", SCrossFadeTransition);
-			scenes.transitions.addTransition("GameScene", "ScreenWinGameScene", SCrossFadeTransition);
+			scenes.transitions.addTransition("GameScene", "InstructionsScene", SCrossFadeTransition);
 			
 			scenes.addEventListener(SEvent.ENTER, onEnterMainMenu);
-			scenes.addEventListener(SEvent.ENTER, onEnterIntro);
 			scenes.addEventListener(SEvent.ENTER, onEnterGame);
 			scenes.addEventListener(GameScene.ENTER_PLAYING, onEnterPlaying)
 			scenes.addEventListener(GameScene.EXIT_PLAYING, onExitPlaying)
-			
-			scenes.addEventListener(SEvent.ENTER, onScreenWinGameScene)
 			
 			// GOTO START SCENE
 			scenes.switchScene("MainMenuScene", null, false, { afterIsLive:true } );
