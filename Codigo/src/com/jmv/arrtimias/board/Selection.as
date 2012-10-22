@@ -1,6 +1,7 @@
 package com.jmv.arrtimias.board 
 {
 	import com.jmv.arrtimias.events.PickerEvent;
+	import com.jmv.arrtimias.menues.properties.VelocityAdjustView;
 	import com.jmv.arrtimias.utilities.ColorPicker;
 	import flash.display.Sprite;
 	import flash.events.ContextMenuEvent;
@@ -17,26 +18,40 @@ package com.jmv.arrtimias.board
 		
 		private var _isSelectingCells:Boolean;
 		private var caller:Sprite;
+		
 		private var setColor:ContextMenuItem;
+		private var setVelocity:ContextMenuItem;
 		
 		private var colorPicker:ColorPicker;
+		private var velocityAdjustView:VelocityAdjustView;
 		
 		public function Selection(caller:Sprite) {
 			//buil the menu
 			menu = new ContextMenu();
 			//make the custom item
 			setColor = new ContextMenuItem("Set Color");
+			setVelocity = new ContextMenuItem("Set Velocity");
+			
 			my_menu.customItems.push(setColor);
+			my_menu.customItems.push(setVelocity);
 			
 			//setting the listener to this menu
 			setColor.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, setColorToCells);
+			setVelocity.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, setVelocityToCells);
+			
 			//creating the color picker
 			colorPicker = new ColorPicker();
+			velocityAdjustView = new VelocityAdjustView();
 			
 			//make the other variables get value
 			this.caller = caller;
 			isSelectingCells = false;
 			
+		}
+		
+		private function setVelocityToCells(e:ContextMenuEvent):void 
+		{
+			velocityAdjustView.showColorPicker(this);
 		}
 		
 		public function createListeners():void {
