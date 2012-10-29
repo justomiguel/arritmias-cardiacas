@@ -73,9 +73,9 @@ public class MainPanelController extends GenericController{
         destroyCurrentSimulation();
     }
 
-    public void updateChart(LinkedList<Double> newElements, int age) {
+    public void updateChart(LinkedList<Double> newElements, int age, double average) {
         MainPanelView panel = (MainPanelView) this.view;
-        panel.updateChart(age, newElements);
+        panel.updateChart(average, age, newElements);
     }
 
     public void addMateriaPrima(int[] materiasPrimas) {
@@ -91,6 +91,14 @@ public class MainPanelController extends GenericController{
 
     public void setMaximumPopulation(int maximumPopulation) {
         population.setMaximumPopulation(maximumPopulation);
+    }
+
+    public void setSimulationVelocity(int value) {
+        population.setSimulationVelocity(value);
+    }
+
+    public void updateProgress(int progress) {
+        ((MainPanelView) view).updateProgress(progress);
     }
 
    

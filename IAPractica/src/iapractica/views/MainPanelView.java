@@ -39,6 +39,10 @@ public class MainPanelView extends GenericView {
     private XYSeriesCollection xySeriesCollection;
     private ChartPanel myChartPanel;
     private LinkedList<JSpinner> spinnersCargaDatos = new LinkedList<JSpinner>();
+    private XYPlot xyPlot;
+    private JFreeChart jfreechart;
+    int iteracionesMaxima;
+    double worstAptitudNumber = 0;
 
     /** Creates new form MainPanel */
     public MainPanelView() {
@@ -110,27 +114,29 @@ public class MainPanelView extends GenericView {
         jSpinner11 = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jSlider1 = new javax.swing.JSlider();
+        velocidad = new javax.swing.JSlider();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         useChart = new javax.swing.JCheckBox();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        stadistic = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        statics = new javax.swing.JCheckBox();
+        bestAptitud = new javax.swing.JLabel();
+        worstAptitud = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        averageAptitud = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        population = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        age = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         chartPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -323,7 +329,7 @@ public class MainPanelView extends GenericView {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSpinner13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(Metodos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -480,27 +486,36 @@ public class MainPanelView extends GenericView {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel5.border.title"))); // NOI18N
         jPanel5.setName("jPanel5"); // NOI18N
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setValue(100);
-        jSlider1.setName("jSlider1"); // NOI18N
+        velocidad.setPaintLabels(true);
+        velocidad.setPaintTicks(true);
+        velocidad.setSnapToTicks(true);
+        velocidad.setValue(100);
+        velocidad.setName("velocidad"); // NOI18N
+        velocidad.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                velocidadStateChanged(evt);
+            }
+        });
+        velocidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                velocidadPropertyChange(evt);
+            }
+        });
+        jPanel5.add(velocidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 16, 558, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel19.setForeground(resourceMap.getColor("jLabel19.foreground")); // NOI18N
+        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
+        jLabel19.setName("jLabel19"); // NOI18N
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 45, -1, -1));
 
-        jPanel6.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 570, 50));
+        jLabel20.setForeground(resourceMap.getColor("jLabel20.foreground")); // NOI18N
+        jLabel20.setText(resourceMap.getString("jLabel20.text")); // NOI18N
+        jLabel20.setName("jLabel20"); // NOI18N
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 45, -1, -1));
+
+        jPanel6.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 570, 70));
 
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
@@ -530,69 +545,86 @@ public class MainPanelView extends GenericView {
 
         useChart.setText(resourceMap.getString("useChart.text")); // NOI18N
         useChart.setName("useChart"); // NOI18N
-        jPanel6.add(useChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        useChart.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                useChartItemStateChanged(evt);
+            }
+        });
+        useChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useChartActionPerformed(evt);
+            }
+        });
+        jPanel6.add(useChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, -1));
 
-        jLabel15.setFont(resourceMap.getFont("jLabel15.font")); // NOI18N
-        jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
-        jLabel15.setName("jLabel15"); // NOI18N
-        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
-
-        jLabel16.setFont(resourceMap.getFont("jLabel16.font")); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText(resourceMap.getString("jLabel16.text")); // NOI18N
-        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setName("jLabel16"); // NOI18N
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 200, -1));
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel9.border.title"))); // NOI18N
-        jPanel9.setName("jPanel9"); // NOI18N
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stadistic.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("stadistic.border.title"))); // NOI18N
+        stadistic.setName("stadistic"); // NOI18N
+        stadistic.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel17.setText(resourceMap.getString("jLabel17.text")); // NOI18N
         jLabel17.setName("jLabel17"); // NOI18N
-        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        stadistic.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jLabel18.setText(resourceMap.getString("jLabel18.text")); // NOI18N
         jLabel18.setName("jLabel18"); // NOI18N
-        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, -1, -1));
+        stadistic.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 66, -1, -1));
 
-        jCheckBox12.setText(resourceMap.getString("jCheckBox12.text")); // NOI18N
-        jCheckBox12.setName("jCheckBox12"); // NOI18N
-        jPanel9.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        statics.setText(resourceMap.getString("statics.text")); // NOI18N
+        statics.setName("statics"); // NOI18N
+        statics.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                staticsItemStateChanged(evt);
+            }
+        });
+        statics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staticsActionPerformed(evt);
+            }
+        });
+        stadistic.add(statics, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
-        jLabel19.setName("jLabel19"); // NOI18N
-        jPanel9.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        bestAptitud.setText(resourceMap.getString("bestAptitud.text")); // NOI18N
+        bestAptitud.setName("bestAptitud"); // NOI18N
+        stadistic.add(bestAptitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
-        jLabel20.setText(resourceMap.getString("jLabel20.text")); // NOI18N
-        jLabel20.setName("jLabel20"); // NOI18N
-        jPanel9.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 66, -1, -1));
+        worstAptitud.setText(resourceMap.getString("worstAptitud.text")); // NOI18N
+        worstAptitud.setName("worstAptitud"); // NOI18N
+        stadistic.add(worstAptitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 66, -1, -1));
 
         jLabel21.setText(resourceMap.getString("jLabel21.text")); // NOI18N
         jLabel21.setName("jLabel21"); // NOI18N
-        jPanel9.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        stadistic.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
-        jLabel22.setText(resourceMap.getString("jLabel22.text")); // NOI18N
-        jLabel22.setName("jLabel22"); // NOI18N
-        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        averageAptitud.setText(resourceMap.getString("averageAptitud.text")); // NOI18N
+        averageAptitud.setName("averageAptitud"); // NOI18N
+        stadistic.add(averageAptitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
         jLabel23.setText(resourceMap.getString("jLabel23.text")); // NOI18N
         jLabel23.setName("jLabel23"); // NOI18N
-        jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 115, -1, -1));
+        stadistic.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 115, -1, -1));
 
-        jLabel24.setText(resourceMap.getString("jLabel24.text")); // NOI18N
-        jLabel24.setName("jLabel24"); // NOI18N
-        jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 115, -1, -1));
+        population.setText(resourceMap.getString("population.text")); // NOI18N
+        population.setName("population"); // NOI18N
+        stadistic.add(population, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 115, -1, -1));
 
         jLabel25.setText(resourceMap.getString("jLabel25.text")); // NOI18N
         jLabel25.setName("jLabel25"); // NOI18N
-        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        stadistic.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        jLabel26.setText(resourceMap.getString("jLabel26.text")); // NOI18N
-        jLabel26.setName("jLabel26"); // NOI18N
-        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+        age.setText(resourceMap.getString("age.text")); // NOI18N
+        age.setName("age"); // NOI18N
+        stadistic.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
-        jPanel6.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 212, 180));
+        jPanel6.add(stadistic, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 212, 180));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel7.border.title"))); // NOI18N
+        jPanel7.setName("jPanel7"); // NOI18N
+        jPanel7.setLayout(new java.awt.GridLayout());
+
+        jProgressBar1.setName("jProgressBar1"); // NOI18N
+        jPanel7.add(jProgressBar1);
+
+        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 570, 50));
 
         tabPanel.addTab("Propiedades Simulacion", jPanel6);
 
@@ -605,17 +637,17 @@ public class MainPanelView extends GenericView {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(tabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addGap(9, 9, 9))
+                .addComponent(tabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 16, 830, 250));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 16, 830, 270));
 
         chartPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("chartPanel.border.title"))); // NOI18N
         chartPanel.setAutoscrolls(true);
         chartPanel.setName("chartPanel"); // NOI18N
         chartPanel.setLayout(new javax.swing.BoxLayout(chartPanel, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel2.add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 268, 824, 300));
+        jPanel2.add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 288, 824, 280));
 
         jPanel1.add(jPanel2);
 
@@ -641,7 +673,7 @@ public class MainPanelView extends GenericView {
                     int value = Integer.parseInt(jSpinner.getValue().toString());
                     String name = jSpinner.getName().substring(jSpinner.getName().length() - 1);
                     int pos = Integer.parseInt(name);
-                    valores[pos-1] = value;
+                    valores[pos - 1] = value;
                 }
             } catch (NumberFormatException e) {
                 PopUpFactory.showErrorPopUP(this, "Los Campos deben ser solamente numeros");
@@ -650,8 +682,10 @@ public class MainPanelView extends GenericView {
         }
         MainPanelController main = (MainPanelController) this.getController();
         main.addMateriaPrima(valores);
-        main.setMaximumAge(Integer.parseInt(iteracionesMax1.getValue().toString()));
+
         main.setMaximumPopulation(Integer.parseInt(indivMax1.getValue().toString()));
+        iteracionesMaxima = Integer.parseInt(iteracionesMax1.getValue().toString());
+        main.setMaximumAge(iteracionesMaxima);
         PopUpFactory.showConfirmPopUP(this, "Valores Agregados con exito");
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -664,6 +698,42 @@ public class MainPanelView extends GenericView {
             PopUpFactory.showErrorPopUP(this, "No agresgaste materia prima para comenzar con la simulacion");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void useChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useChartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_useChartActionPerformed
+
+    private void staticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staticsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_staticsActionPerformed
+
+    private void staticsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_staticsItemStateChanged
+        // TODO add your handling code here:
+        enableStadistics();
+    }//GEN-LAST:event_staticsItemStateChanged
+
+    private void useChartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_useChartItemStateChanged
+        // TODO add your handling code here:
+        boolean value = useChart.isSelected();
+        chartPanel.setEnabled(value);
+        jfreechart.setNotify(value);
+        this.chartPanel.setEnabled(value);
+    }//GEN-LAST:event_useChartItemStateChanged
+
+    private void velocidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_velocidadPropertyChange
+        // TODO add your handling code here:
+     
+       
+
+    }//GEN-LAST:event_velocidadPropertyChange
+
+    private void velocidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_velocidadStateChanged
+        // TODO add your handling code here:
+         MainPanelController main = (MainPanelController) this.getController();
+        if (main != null){
+            main.setSimulationVelocity(this.velocidad.getValue());
+        }
+    }//GEN-LAST:event_velocidadStateChanged
 
     /**
      * @param args the command line arguments
@@ -680,6 +750,9 @@ public class MainPanelView extends GenericView {
     private javax.swing.JPanel Metodos;
     private javax.swing.JPanel Metodos1;
     private javax.swing.JPanel Metodos2;
+    private javax.swing.JLabel age;
+    private javax.swing.JLabel averageAptitud;
+    private javax.swing.JLabel bestAptitud;
     private javax.swing.JPanel cargaDatos;
     private javax.swing.JPanel chartPanel;
     private javax.swing.JSpinner indivMax1;
@@ -692,7 +765,6 @@ public class MainPanelView extends GenericView {
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -707,19 +779,14 @@ public class MainPanelView extends GenericView {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -736,8 +803,8 @@ public class MainPanelView extends GenericView {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner11;
     private javax.swing.JSpinner jSpinner12;
@@ -750,8 +817,13 @@ public class MainPanelView extends GenericView {
     private javax.swing.JSpinner jSpinner7;
     private javax.swing.JSpinner jSpinner8;
     private javax.swing.JPanel operadoresGeneticos;
+    private javax.swing.JLabel population;
+    private javax.swing.JPanel stadistic;
+    private javax.swing.JCheckBox statics;
     private javax.swing.JTabbedPane tabPanel;
     private javax.swing.JCheckBox useChart;
+    private javax.swing.JSlider velocidad;
+    private javax.swing.JLabel worstAptitud;
     // End of variables declaration//GEN-END:variables
 
     public JPanel getChartPanel() {
@@ -773,10 +845,10 @@ public class MainPanelView extends GenericView {
     }
 
     private ChartPanel createChartPanel() {
-        JFreeChart jfreechart = ChartFactory.createScatterPlot(
+        jfreechart = ChartFactory.createScatterPlot(
                 "Poblacion", "Individuos", "Fitness Value", createSampleData(),
                 PlotOrientation.VERTICAL, true, true, false);
-        XYPlot xyPlot = (XYPlot) jfreechart.getPlot();
+        xyPlot = (XYPlot) jfreechart.getPlot();
         xyPlot.setDomainCrosshairVisible(true);
         xyPlot.setRangeCrosshairVisible(true);
         NumberAxis domain = (NumberAxis) xyPlot.getDomainAxis();
@@ -789,19 +861,36 @@ public class MainPanelView extends GenericView {
         return xySeriesCollection;
     }
 
-    public void updateChart(int age, LinkedList<Double> data) {
+    public void updateChart(Double average, int age, LinkedList<Double> data) {
         try {
-
-            if (xySeriesCollection.getSeriesCount() > 3) {
-                xySeriesCollection.removeSeries(0);
+            if (statics.isSelected()) {
+                this.bestAptitud.setText(data.get(0).toString());
+                Double localWorst = data.get(data.size() - 1);
+                if (localWorst > worstAptitudNumber) {
+                    this.worstAptitud.setText(localWorst.toString());
+                    worstAptitudNumber = localWorst;
+                }
+                String promedio = average.toString();
+                int hasDot = promedio.indexOf(".");
+                if ((hasDot > 0) && (promedio.length() > hasDot + 3)) {
+                    promedio = promedio.substring(0, hasDot + 3);
+                }
+                this.averageAptitud.setText(promedio);
+                this.population.setText(String.valueOf(data.size()));
+                this.age.setText(age + "/" + iteracionesMaxima);
             }
-            XYSeries series = new XYSeries("Age " + age);
-            xySeriesCollection.addSeries(series);
-            for (int i = 0; i < data.size(); i++) {
-                Double myData = data.get(i);
-                double x = i;
-                double y = myData;
-                series.add(x, y);
+            if (useChart.isSelected()) {
+                if (xySeriesCollection.getSeriesCount() > 3) {
+                    xySeriesCollection.removeSeries(0);
+                }
+                XYSeries series = new XYSeries("Age " + age);
+                for (int i = 0; i < data.size(); i++) {
+                    Double myData = data.get(i);
+                    double x = i;
+                    double y = myData;
+                    series.add(x, y);
+                }
+                xySeriesCollection.addSeries(series);
             }
         } catch (Exception e) {
             logguer.logError(e.getClass(), e.getMessage());
@@ -811,9 +900,11 @@ public class MainPanelView extends GenericView {
     private void init() {
         //set tab titles
         this.tabPanel.setTitleAt(0, "Carga de Datos");
-        this.tabPanel.setTitleAt(1, "Propiedades Simulacion");
-        this.tabPanel.setTitleAt(2, "Ajuste de Operadores");
-
+        this.tabPanel.setTitleAt(2, "Propiedades Simulacion");
+        this.tabPanel.setTitleAt(1, "Ajuste de Operadores");
+        this.useChart.setSelected(true);
+        this.statics.setSelected(true);
+        enableStadistics();
         //set  data for the validators
         Component[] comps = cargaDatos.getComponents();
         for (int i = 0; i < comps.length; i++) {
@@ -822,7 +913,22 @@ public class MainPanelView extends GenericView {
                 spinnersCargaDatos.add((JSpinner) component);
             }
         }
+        this.velocidad.setValue(10);
 
+    }
 
+    private void enableStadistics() {
+        boolean value = statics.isSelected();
+        Component[] comps = stadistic.getComponents();
+        for (int i = 0; i < comps.length; i++) {
+            Component component = comps[i];
+            if (!component.equals(statics)) {
+                component.setEnabled(value);
+            }
+        }
+    }
+
+    public void updateProgress(int progress) {
+        this.jProgressBar1.setValue(progress);
     }
 }

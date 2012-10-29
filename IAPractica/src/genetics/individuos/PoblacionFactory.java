@@ -26,7 +26,7 @@ public class PoblacionFactory {
         return instance;
     }
 
-    public LinkedList<Individuo> createInitialRandomPopulation(int initialPopulation, LinkedList<Integer> materiasPrimas) throws NoMateriaPrimaAddedException {
+    public LinkedList<Individuo> createInitialRandomPopulation(Poblacion p, int initialPopulation, LinkedList<Integer> materiasPrimas) throws NoMateriaPrimaAddedException {
 
         LinkedList<Individuo> initialPop = new LinkedList<Individuo>();
 
@@ -41,7 +41,8 @@ public class PoblacionFactory {
 
 
         int[] productos = new int[4];
-        while (initialPop.size() < initialPopulation) {
+        int currentSize = 0;
+        while (currentSize < initialPopulation) {
             productos[0] = MathUtils.getRandomNumber(0, maxQuantities.get(0));
             productos[1] = MathUtils.getRandomNumber(0, maxQuantities.get(1));
             productos[2] = MathUtils.getRandomNumber(0, maxQuantities.get(2));
@@ -49,6 +50,9 @@ public class PoblacionFactory {
             try {
                 Individuo individuo = IndividuosFactory.getInstance().createIndividuo(productos);
                 initialPop.add(individuo);
+                currentSize = initialPop.size();
+                int percetageOfSucces = currentSize*100/initialPopulation;
+                p.updateUIProgress(5+percetageOfSucces*40/100);
             } catch (ProductCreationException ex) {
                 //logguer.logError(this, "No pudo crear producto por que materia prima insuficiente", ex);
             }  

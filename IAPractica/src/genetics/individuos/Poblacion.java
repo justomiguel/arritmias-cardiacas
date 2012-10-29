@@ -47,6 +47,7 @@ public class Poblacion extends Thread {
 
     //materias primas
     private LinkedList<Integer> materiasPrimas;
+    private int sleepTime = 100;
 
     public Poblacion(GenericController controller, LinkedList<Integer> materiasPrimas) {
         maximumAge = MAXIMUM_DEFAULT_AGE;
@@ -110,9 +111,9 @@ public class Poblacion extends Thread {
 
     @Override
     public void run() {
-        
+        this.updateUIProgress(5);
         try {
-            currentPopulation = PoblacionFactory.getInstance().createInitialRandomPopulation(maximumPopulation, materiasPrimas);
+            currentPopulation = PoblacionFactory.getInstance().createInitialRandomPopulation(this, maximumPopulation, materiasPrimas);
         } catch (NoMateriaPrimaAddedException ex) {
            logguer.logError(this, ex.getMessage(), ex);
         }
@@ -123,17 +124,24 @@ public class Poblacion extends Thread {
         logguer.logInfo("Max Age " + maximumAge);
         logguer.logInfo("CurrentPopulation " + maximumPopulation);
 
-
         updateUIChart(age, currentPopulation);
+
+        this.updateUIProgress(50);
+
         while (age < maximumAge) {
             if (isRunning()) {
                 dataManager.saveToExternalFile(age, currentPopulation);
                 evolve();
                 updateUIChart(age, currentPopulation);
+
+                //update The progress bar
+                int percetageOfSucces = age*100/maximumAge;
+                this.updateUIProgress(50+percetageOfSucces*50/100);
+
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(sleepTime);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Poblacion.class.getName()).log(Level.SEVERE, null, ex);
+                    logguer.logError(this, ex.getMessage(), ex);
                }
             }
         }
@@ -147,6 +155,7 @@ public class Poblacion extends Thread {
             }
         }
 
+         this.updateUIProgress(100);
     }
 
     public int getAge() {
@@ -178,11 +187,19 @@ public class Poblacion extends Thread {
 
     private void updateUIChart(int age, LinkedList<Individuo> currentPopulation) {
         LinkedList<Double> newElements = new LinkedList<Double>();
+        double average = 0;
         for (Individuo individuo : currentPopulation) {
-            newElements.add(individuo.getFitnessValue());
+            double fitness = individuo.getFitnessValue();
+            newElements.add(fitness);
+            average += fitness;
         }
+        average = average / currentPopulation.size();
         Collections.sort(newElements);
-        this.controller.updateChart(newElements, age);
+        this.controller.updateChart(newElements, age, average);
+    }
+
+    public void updateUIProgress(int progress) {
+        this.controller.updateProgress(progress);
     }
 
     @Override
@@ -213,6 +230,15 @@ public class Poblacion extends Thread {
 
     public void setMaximumPopulation(int maximumPopulation) {
         this.maximumPopulation = maximumPopulation;
+    }
+
+    public void setSimulationVelocity(int value) {
+        try {
+            this.sleep(100);
+            this.sleepTime = value*10;
+        } catch (InterruptedException ex) {
+            logguer.logError(this, "can not set velocity", ex);
+        }
     }
 
 
