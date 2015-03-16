@@ -1,0 +1,1 @@
+Software que emula la superficie de un corazon artificial para el estudio de las arritmias cardiacas
